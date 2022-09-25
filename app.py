@@ -1,12 +1,10 @@
-from flask import Flask
+from application.main import create_app
+from application import api_blueprint
+import os
 
-app = Flask(__name__)
+env = os.getenv("ENVIRONMENT", "dev")
+app = create_app(env)
+app.register_blueprint(api_blueprint)
 
-
-@app.route('/')
-def hello_world():  # put application's code here
-    return 'Hello World!'
-
-
-if __name__ == '__main__':
-    app.run()
+if __name__ == "__main__":
+    app.run(debug=env == "dev")
