@@ -1,18 +1,34 @@
 import importlib.util
 import pathlib
+import sys
 import types
 
-from flask import Blueprint
+from flask import Blueprint, Flask
 from application.constants import CONTROLLERS_DIR_PATH
+from application.main.decorators.app_route import AppRoute
 
 
-def load_controllers_as_child_blueprints(base: Blueprint) -> Blueprint:
-    for controller in pathlib.Path(CONTROLLERS_DIR_PATH).glob("*.py"):
+def load_controllers(app: Flask) -> None:
+    namespaces = [namespace for namespace in pathlib.Path(CONTROLLERS_DIR_PATH).rglob("*") if namespace.is_dir()]
 
-        if (module := load_module_with_blueprint(controller)) is not None:
-            base.register_blueprint(module.blueprint)
+    for i, controller_namespace_path in enumerate(namespaces):
+        name = controller_namespace_path.stem
 
-    return base
+        if name == "__pycache__":
+            continue
+
+        prefix = name if name != "web" else ""
+
+        namespaced_blueprint = Blueprint(name, name, url_prefix=f"/{prefix}")
+
+        for controller in controller_namespace_path.glob("*.py"):
+            load_module_with_blueprint(controller)
+
+        for blueprint in AppRoute.blueprints.values():
+            namespaced_blueprint.register_blueprint(blueprint)
+
+        AppRoute.clear_blueprints()
+        app.register_blueprint(namespaced_blueprint)
 
 
 def load_module_with_blueprint(controller: pathlib.Path) -> bool | types.ModuleType:
@@ -22,6 +38,5 @@ def load_module_with_blueprint(controller: pathlib.Path) -> bool | types.ModuleT
         return False
 
     module = importlib.util.module_from_spec(spec)
+    sys.modules[module.__name__] = module
     spec.loader.exec_module(module)
-
-    return module

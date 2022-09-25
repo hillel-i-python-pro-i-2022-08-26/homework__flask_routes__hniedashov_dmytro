@@ -1,15 +1,14 @@
-from flask import Blueprint
+from application.main.decorators.app_route import AppRoute
 from application.main.services.space_service import SpaceService
 
-blueprint = Blueprint("space", __name__, url_prefix="/space")
 space_service = SpaceService()
 
 
-@blueprint.route("/")
+@AppRoute.route("/")
 def astros():
     return space_service.get_astros()
 
 
-@blueprint.route("/location")
+@AppRoute.route("/location")
 def location():
     return space_service.get_current_location()
