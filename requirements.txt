@@ -1,8 +1,15 @@
 #Core
 Flask==2.2.2
+
+#Data generatiom
 Faker==14.2.1
+
+#Data validation
 marshmallow==3.18.0
 flask-marshmallow==0.14.0
+
+#HTTP client
+aiohttp==3.8.3
 
 # [code_style]-[BEGIN]
 # Pre-commit hook
