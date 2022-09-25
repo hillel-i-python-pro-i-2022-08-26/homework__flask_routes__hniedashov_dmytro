@@ -8,4 +8,4 @@ class Requirements:
 
     @property
     def content(self) -> list[str]:
-        return pathlib.Path(self.file_path).read_text().splitlines()
+        return self.file_path.read_text().splitlines()
