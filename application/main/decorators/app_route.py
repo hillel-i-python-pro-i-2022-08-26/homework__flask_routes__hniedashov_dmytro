@@ -10,8 +10,10 @@ class AppRoute:
             namespace = func.__module__.split("_")[0]
             url_prefix = namespace
 
-            if options.get("use_prefix") == False:
-                url_prefix = ""
+            if "use_prefix" in options:
+                if not options.get("use_prefix"):
+                    url_prefix = ""
+
                 options.pop("use_prefix")
 
             if namespace not in AppRoute.blueprints.keys():

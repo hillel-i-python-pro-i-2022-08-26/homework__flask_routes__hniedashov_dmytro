@@ -1,6 +1,3 @@
-from typing import Type
-
-
 class Config:
     DEBUG: bool = False
 
