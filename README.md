@@ -9,6 +9,14 @@
 
 Homework related actions:
 
+### ▶️ Build dev
+
+Build the project, install requirements
+
+```shell
+make init-dev
+```
+
 ### ▶️ Run
 
 Make all actions needed for run homework from zero.
