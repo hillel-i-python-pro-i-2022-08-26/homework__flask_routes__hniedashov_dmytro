@@ -11,8 +11,15 @@ class Creator(ABC):
         pass
 
     """
+    Instantiate concrete
+    """
+
+    def get(self):
+        return self.concrete()()
+
+    """
     Operation should be executed if any
     """
 
-    def generate_with_data(self, data: tuple):
+    def get_with_data(self, data: tuple):
         pass

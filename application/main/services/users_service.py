@@ -5,7 +5,7 @@ from application.main.models.user import User
 class UserService:
     @staticmethod
     def get_user() -> User:
-        return UserFactory().concrete()
+        return UserFactory().get()
 
     @staticmethod
     def get_users(quantity: int = 100) -> list[User]:

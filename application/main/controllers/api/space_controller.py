@@ -6,7 +6,7 @@ space_service = SpaceService()
 
 @AppRoute.route("/")
 def astros():
-    return space_service.get_astros()
+    return space_service.get_astros_full_info()
 
 
 @AppRoute.route("/location")

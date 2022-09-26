@@ -14,11 +14,14 @@ class SpaceService:
             async with session.get(f"/{route}") as response:
                 return await response.json()
 
-    def run(self, route: str) -> str:
+    def run(self, route: str) -> dict:
         return asyncio.run(self.request(route))
 
-    def get_astros(self) -> str:
+    def get_astros_full_info(self) -> dict:
         return self.run(self.astros_route)
 
-    def get_current_location(self) -> str:
-        return self.run(self.current_location_route)
+    def get_astros(self) -> list:
+        return self.get_astros_full_info().get("people")
+
+    def get_current_location(self) -> dict:
+        return self.run(self.current_location_route).get("iss_position")

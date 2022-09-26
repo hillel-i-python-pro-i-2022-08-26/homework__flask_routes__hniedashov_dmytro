@@ -1,0 +1,22 @@
+{% set active_page = "requirements" %}
+{% extends "base.html" %}
+{% block title %}Requirements{% endblock %}
+{% block header %}Requirements{% endblock %}
+{% block content %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Package</th>
+            <th scope="col">Version</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for package, version in requirements %}
+            <tr>
+                <td>{{ package }}</td>
+                <td>{{ version }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

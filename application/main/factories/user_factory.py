@@ -3,5 +3,5 @@ from application.main.models.user import User
 
 
 class UserFactory(Creator):
-    def concrete(self):
-        return User()
+    def concrete(self) -> type[User]:
+        return User

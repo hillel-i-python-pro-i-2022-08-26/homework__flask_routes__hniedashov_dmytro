@@ -1,0 +1,20 @@
+{% set active_page = "location" %}
+{% extends "base.html" %}
+{% block title %}Station Location{% endblock %}
+{% block header %}Station current location{% endblock %}
+{% block content %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Latitude</th>
+            <th scope="col">Longitude</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ position.get('latitude') }}</td>
+                <td>{{ position.get('longitude') }}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}
