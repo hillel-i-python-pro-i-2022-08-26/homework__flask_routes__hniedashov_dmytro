@@ -1,11 +1,24 @@
-#Flask framework
+#Core
 Flask==2.2.2
+
+#Data generatiom
+Faker==14.2.1
+
+#Data validation
+marshmallow==3.18.0
+flask-marshmallow==0.14.0
+
+#Working with data
+pandas==1.5.0
+
+#HTTP client
+aiohttp==3.8.3
 
 # [code_style]-[BEGIN]
 # Pre-commit hook
 pre-commit==2.20.0
 # Upgrade syntax.
-pyupgrade==2.38.0
+pyupgrade==2.38.2
 # Formatter. Apply codestyle.
 black==22.8.0
 # Check codestyle

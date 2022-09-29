@@ -1,0 +1,20 @@
+{% set active_page = "mean" %}
+{% extends "base.html" %}
+{% block title %}Mean{% endblock %}
+{% block header %}Mean{% endblock %}
+{% block content %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Weight</th>
+            <th scope="col">Height</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>{{ mean.get('weight') }} kg</td>
+            <td>{{ mean.get('height') }} cm</td>
+        </tr>
+        </tbody>
+    </table>
+{% endblock %}

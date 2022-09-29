@@ -1,0 +1,22 @@
+{% set active_page = "astros" %}
+{% extends "base.html" %}
+{% block title %}Astros{% endblock %}
+{% block header %}Astros currently on station (Total : {{ count }}) {% endblock %}
+{% block content %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Craft</th>
+            <th scope="col">Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for info in people %}
+            <tr>
+                <td>{{ info.get('craft') }}</td>
+                <td>{{ info.get('name') }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

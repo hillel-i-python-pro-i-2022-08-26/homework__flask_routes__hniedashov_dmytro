@@ -6,7 +6,8 @@ homework-i-run:
 .PHONY: homework-i-purge
 # Delete all created artifacts, related with homework execution
 homework-i-purge:
-	@echo Goodbye
+	@rm -rf public/mean.csv && \
+	echo "GoodBye!"
 
 
 .PHONY: init-dev
