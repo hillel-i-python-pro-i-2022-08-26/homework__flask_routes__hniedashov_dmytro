@@ -40,3 +40,25 @@ Run a pre-commit.
 ```shell
 make pre-commit-run-all
 ```
+
+### ▶️ Build and run app using docker
+
+Build the project, install requirements
+
+```shell
+make docker-i-run
+```
+
+### ▶️ Stop docker container
+
+```shell
+make docker-i-stop
+```
+
+### ▶️ Down docker container
+
+Removes volumes, networks etc. related to the containers
+
+```shell
+make docker-i-down
+```

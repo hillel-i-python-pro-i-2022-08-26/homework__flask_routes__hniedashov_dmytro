@@ -11,15 +11,15 @@ docker-i-run:
 
 
 
-.PHONY: docker-i-down
+.PHONY: docker-i-stop
  # Stop homework using docker
-docker-i-down:
+docker-i-stop:
 	@docker-compose stop
 
 
 
-.PHONY: docker-i-purge
-docker-i-purge:
+.PHONY: docker-i-down
+docker-i-down:
 	@docker-compose down -v --rmi all --remove-orphans
 
 
