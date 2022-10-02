@@ -6,7 +6,6 @@ services:
       context: .
     container_name: api
     command: ["flask", "run", "--host=0.0.0.0", "--port=8800"]
-    working_dir: /api
     volumes:
       - ./application:/api/application
       - ./public:/api/public
