@@ -3,6 +3,27 @@
 homework-i-run:
 	@FLASK_DEBUG=1 flask run
 
+
+.PHONY: docker-i-run
+# Build homework using docker
+docker-i-run:
+	@docker-compose up --build
+
+
+
+.PHONY: docker-i-stop
+ # Stop homework using docker
+docker-i-stop:
+	@docker-compose stop
+
+
+
+.PHONY: docker-i-down
+docker-i-down:
+	@docker-compose down -v --rmi all --remove-orphans
+
+
+
 .PHONY: homework-i-purge
 # Delete all created artifacts, related with homework execution
 homework-i-purge:
